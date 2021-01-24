@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TodoListViewController.swift
 //  ComposableTodo
 //
 //  Created by Sunny.K on 2021/01/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TodoListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
