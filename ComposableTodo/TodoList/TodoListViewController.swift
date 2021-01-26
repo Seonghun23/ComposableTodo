@@ -27,6 +27,12 @@ final class TodoListViewController: UIViewController {
         super.viewDidLoad()
 
         self.setLayout()
+        
+        let baritem = UIBarButtonItem(systemItem: .add)
+        baritem.primaryAction = UIAction(handler: { [weak self] _ in
+            self?.viewStore?.send(.toggleAddTodoPresent)
+        })
+        self.navigationItem.rightBarButtonItem  = baritem
 
         viewStore?.send(.initialize)
 
@@ -34,6 +40,18 @@ final class TodoListViewController: UIViewController {
             .map(\.todoList)
             .sink(receiveValue: { [weak self] _ in
                 self?.tableView.reloadData()
+            })
+            .store(in: &cancellables)
+
+        viewStore?.publisher
+            .map(\.isAddTodoPresented)
+            .removeDuplicates()
+            .filter { $0 }
+            .sink(receiveValue: { [weak self] _ in
+                let viewController = AddTodoViewController()
+                self?.present(viewController, animated: true, completion: {
+                    self?.viewStore?.send(.toggleAddTodoPresent)
+                })
             })
             .store(in: &cancellables)
     }

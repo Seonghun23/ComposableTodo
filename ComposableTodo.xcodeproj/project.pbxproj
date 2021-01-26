@@ -18,6 +18,11 @@
 		1F2DD7C025C04A6800AD4B34 /* TodoListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7BF25C04A6800AD4B34 /* TodoListAction.swift */; };
 		1F2DD7C625C04AB000AD4B34 /* TodoListEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7C525C04AB000AD4B34 /* TodoListEnvironment.swift */; };
 		1F2DD7C925C04AED00AD4B34 /* TodoListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7C825C04AED00AD4B34 /* TodoListReducer.swift */; };
+		1F2DD7CD25C05DD800AD4B34 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7CC25C05DD800AD4B34 /* AddTodoViewController.swift */; };
+		1F2DD7D425C0666700AD4B34 /* AddTodoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7D325C0666700AD4B34 /* AddTodoState.swift */; };
+		1F2DD7D825C0668900AD4B34 /* AddTodoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */; };
+		1F2DD7DB25C0669F00AD4B34 /* AddTodoEnvirenment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DA25C0669F00AD4B34 /* AddTodoEnvirenment.swift */; };
+		1F2DD7DE25C066BA00AD4B34 /* AddTodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,11 @@
 		1F2DD7BF25C04A6800AD4B34 /* TodoListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAction.swift; sourceTree = "<group>"; };
 		1F2DD7C525C04AB000AD4B34 /* TodoListEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListEnvironment.swift; sourceTree = "<group>"; };
 		1F2DD7C825C04AED00AD4B34 /* TodoListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListReducer.swift; sourceTree = "<group>"; };
+		1F2DD7CC25C05DD800AD4B34 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		1F2DD7D325C0666700AD4B34 /* AddTodoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoState.swift; sourceTree = "<group>"; };
+		1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoAction.swift; sourceTree = "<group>"; };
+		1F2DD7DA25C0669F00AD4B34 /* AddTodoEnvirenment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoEnvirenment.swift; sourceTree = "<group>"; };
+		1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoReducer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +103,11 @@
 		1F2DD59625BD807200AD4B34 /* AddTodo */ = {
 			isa = PBXGroup;
 			children = (
+				1F2DD7D225C0665700AD4B34 /* State */,
+				1F2DD7D125C0664E00AD4B34 /* Action */,
+				1F2DD7D025C0664200AD4B34 /* Environment */,
+				1F2DD7CF25C0663800AD4B34 /* Reducer */,
+				1F2DD7CC25C05DD800AD4B34 /* AddTodoViewController.swift */,
 			);
 			path = AddTodo;
 			sourceTree = "<group>";
@@ -135,6 +150,38 @@
 				1F2DD7C825C04AED00AD4B34 /* TodoListReducer.swift */,
 			);
 			path = Reducer;
+			sourceTree = "<group>";
+		};
+		1F2DD7CF25C0663800AD4B34 /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */,
+			);
+			path = Reducer;
+			sourceTree = "<group>";
+		};
+		1F2DD7D025C0664200AD4B34 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				1F2DD7DA25C0669F00AD4B34 /* AddTodoEnvirenment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		1F2DD7D125C0664E00AD4B34 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		1F2DD7D225C0665700AD4B34 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				1F2DD7D325C0666700AD4B34 /* AddTodoState.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,8 +263,13 @@
 				1F2DD57D25BD782C00AD4B34 /* TodoListViewController.swift in Sources */,
 				1F2DD57925BD782C00AD4B34 /* AppDelegate.swift in Sources */,
 				1F2DD7BC25C04A4000AD4B34 /* TodoListState.swift in Sources */,
+				1F2DD7CD25C05DD800AD4B34 /* AddTodoViewController.swift in Sources */,
+				1F2DD7DE25C066BA00AD4B34 /* AddTodoReducer.swift in Sources */,
+				1F2DD7D825C0668900AD4B34 /* AddTodoAction.swift in Sources */,
 				1F2DD7C925C04AED00AD4B34 /* TodoListReducer.swift in Sources */,
 				1F2DD7C025C04A6800AD4B34 /* TodoListAction.swift in Sources */,
+				1F2DD7D425C0666700AD4B34 /* AddTodoState.swift in Sources */,
+				1F2DD7DB25C0669F00AD4B34 /* AddTodoEnvirenment.swift in Sources */,
 				1F2DD57B25BD782C00AD4B34 /* SceneDelegate.swift in Sources */,
 				1F2DD59F25BD828F00AD4B34 /* Todo.swift in Sources */,
 			);

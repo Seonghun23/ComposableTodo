@@ -26,13 +26,13 @@ let todoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment
                 return []
             }
         }
-        .map(TodoListAction.reload)
+          .map(TodoListAction.reload)
 
   case .reload(let list):
     state.todoList = list
     return .none
 
-  case .addTodo:
+  case .toggleAddTodoPresent:
     state.isAddTodoPresented = !state.isAddTodoPresented
     return .none
   }

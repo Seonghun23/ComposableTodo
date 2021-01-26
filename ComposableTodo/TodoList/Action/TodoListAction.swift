@@ -9,7 +9,7 @@ import Foundation
 
 enum TodoListAction {
     case toggle(index: Int)
-    case addTodo
+    case toggleAddTodoPresent
     case reload(list: [Todo])
     case initialize
 }
