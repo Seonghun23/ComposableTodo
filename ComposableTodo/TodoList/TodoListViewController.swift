@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import ComposableArchitecture
 
 final class TodoListViewController: UIViewController {
     private lazy var tableView: UITableView = {
@@ -18,23 +19,23 @@ final class TodoListViewController: UIViewController {
         return tableView
     }()
 
-    @Published private var todos: [Todo] = [
-        Todo(description: "first"),
-        Todo(description: "second"),
-        Todo(description: "third")
-    ]
-
     private var cancellables = Set<AnyCancellable>()
+
+    var viewStore: ViewStore<TodoListState, TodoListAction>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setLayout()
 
-        $todos.sink(receiveValue: { [weak self] _ in
-            self?.tableView.reloadData()
-        })
-        .store(in: &cancellables)
+        viewStore?.send(.initialize)
+
+        viewStore?.publisher
+            .map(\.todoList)
+            .sink(receiveValue: { [weak self] _ in
+                self?.tableView.reloadData()
+            })
+            .store(in: &cancellables)
     }
 
     private func setLayout() {
@@ -51,12 +52,12 @@ final class TodoListViewController: UIViewController {
 
 extension TodoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.todos.count
+        return self.viewStore?.state.todoList.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return .init() }
-        let todo = todos[indexPath.row]
+        guard let todo = self.viewStore?.state.todoList[indexPath.row] else { return .init() }
         cell.textLabel?.text = todo.description
         cell.imageView?.image = todo.isDone ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
         return cell
@@ -65,6 +66,6 @@ extension TodoListViewController: UITableViewDataSource {
 
 extension TodoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        todos[indexPath.row].isDone.toggle()
+        viewStore?.send(.toggle(index: indexPath.row))
     }
 }

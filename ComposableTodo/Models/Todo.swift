@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Todo {
+struct Todo: Equatable, Codable {
     let description: String
     var isDone: Bool = false
 }
