@@ -48,10 +48,7 @@ final class TodoListViewController: UIViewController {
             .removeDuplicates()
             .filter { $0 }
             .sink(receiveValue: { [weak self] _ in
-                let viewController = AddTodoViewController()
-                self?.present(viewController, animated: true, completion: {
-                    self?.viewStore?.send(.toggleAddTodoPresent)
-                })
+                self?.presentAddTodo()
             })
             .store(in: &cancellables)
     }
@@ -65,6 +62,27 @@ final class TodoListViewController: UIViewController {
             self.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    private func presentAddTodo() {
+        let viewController = AddTodoViewController()
+        let viewStore = ViewStore(
+            Store(initialState: AddTodoState(),
+                  reducer: addTodoReducer,
+                  environment: AddTodoEnvirenment()
+            )
+        )
+        viewStore.publisher
+            .map(\.addTodo)
+            .compactMap { $0 }
+            .prefix(1)
+            .sink(receiveValue: { [weak self] todo in
+                self?.viewStore?.send(.addTodo(todo))
+            })
+            .store(in: &cancellables)
+        viewController.viewStore = viewStore
+        self.navigationController?.pushViewController(viewController, animated: true)
+        self.viewStore?.send(.toggleAddTodoPresent)
     }
 }
 

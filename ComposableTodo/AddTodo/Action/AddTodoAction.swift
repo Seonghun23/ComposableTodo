@@ -8,5 +8,6 @@
 import Foundation
 
 enum AddTodoAction {
-    
+    case addTodo(String)
+    case dismiss
 }

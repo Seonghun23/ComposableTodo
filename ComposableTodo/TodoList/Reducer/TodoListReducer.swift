@@ -10,6 +10,12 @@ import ComposableArchitecture
 
 let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment> { state, action, environment in
     switch action {
+    case .addTodo(let description):
+        let todo = Todo(description: description)
+        state.todoList.append(todo)
+        return environment.save(state.todoList)
+            .map(TodoListAction.reload)
+
     case .toggle(let index):
       var list = state.todoList
       list[index].isDone.toggle()
@@ -41,6 +47,9 @@ let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvir
 
 let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment> { state, action, environment in
     switch action {
+    case .addTodo(let description):
+        print("addTodo: \(description)")
+        return .none
     case .toggle(let index):
         print("toggle at: \(index)")
         return .none

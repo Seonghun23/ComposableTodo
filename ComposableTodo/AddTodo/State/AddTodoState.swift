@@ -8,5 +8,6 @@
 import Foundation
 
 struct AddTodoState: Equatable {
-    
+    var addTodo: String?
+    var isAddTodoDismissed = false
 }
