@@ -38,6 +38,7 @@ final class TodoListViewController: UIViewController {
 
         viewStore?.publisher
             .map(\.todoList)
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.tableView.reloadData()
             })
@@ -47,6 +48,7 @@ final class TodoListViewController: UIViewController {
             .map(\.isAddTodoPresented)
             .removeDuplicates()
             .filter { $0 }
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.presentAddTodo()
             })
