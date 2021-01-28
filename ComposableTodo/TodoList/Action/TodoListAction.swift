@@ -8,7 +8,6 @@
 import Foundation
 
 enum TodoListAction {
-    case addTodo(String)
     case toggle(index: Int)
     case toggleAddTodoPresent
     case reload(list: [Todo])

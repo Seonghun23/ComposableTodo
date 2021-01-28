@@ -24,6 +24,8 @@
 		1F2DD7DB25C0669F00AD4B34 /* AddTodoEnvirenment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DA25C0669F00AD4B34 /* AddTodoEnvirenment.swift */; };
 		1F2DD7DE25C066BA00AD4B34 /* AddTodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */; };
 		1F5C1B7F25C28D8400814B43 /* ComposableTodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B7E25C28D8400814B43 /* ComposableTodoTests.swift */; };
+		1F5C1B8E25C2BB3600814B43 /* TodoStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B8D25C2BB3600814B43 /* TodoStorable.swift */; };
+		1F5C1B9425C2BB7700814B43 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B9325C2BB7700814B43 /* TodoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		1F5C1B7C25C28D8400814B43 /* ComposableTodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComposableTodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F5C1B7E25C28D8400814B43 /* ComposableTodoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableTodoTests.swift; sourceTree = "<group>"; };
 		1F5C1B8025C28D8400814B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F5C1B8D25C2BB3600814B43 /* TodoStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStorable.swift; sourceTree = "<group>"; };
+		1F5C1B9325C2BB7700814B43 /* TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 			children = (
 				1F2DD57825BD782C00AD4B34 /* AppDelegate.swift */,
 				1F2DD57A25BD782C00AD4B34 /* SceneDelegate.swift */,
+				1F5C1B8C25C2BB1F00814B43 /* Services */,
 				1F2DD59D25BD828700AD4B34 /* Models */,
 				1F2DD59625BD807200AD4B34 /* AddTodo */,
 				1F2DD59325BD7FD000AD4B34 /* TodoList */,
@@ -214,6 +219,15 @@
 				1F5C1B8025C28D8400814B43 /* Info.plist */,
 			);
 			path = ComposableTodoTests;
+			sourceTree = "<group>";
+		};
+		1F5C1B8C25C2BB1F00814B43 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1F5C1B8D25C2BB3600814B43 /* TodoStorable.swift */,
+				1F5C1B9325C2BB7700814B43 /* TodoManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,7 +345,9 @@
 				1F2DD7C925C04AED00AD4B34 /* TodoListReducer.swift in Sources */,
 				1F2DD7C025C04A6800AD4B34 /* TodoListAction.swift in Sources */,
 				1F2DD7D425C0666700AD4B34 /* AddTodoState.swift in Sources */,
+				1F5C1B9425C2BB7700814B43 /* TodoManager.swift in Sources */,
 				1F2DD7DB25C0669F00AD4B34 /* AddTodoEnvirenment.swift in Sources */,
+				1F5C1B8E25C2BB3600814B43 /* TodoStorable.swift in Sources */,
 				1F2DD57B25BD782C00AD4B34 /* SceneDelegate.swift in Sources */,
 				1F2DD59F25BD828F00AD4B34 /* Todo.swift in Sources */,
 			);

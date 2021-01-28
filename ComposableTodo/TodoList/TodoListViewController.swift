@@ -21,7 +21,16 @@ final class TodoListViewController: UIViewController {
 
     private var cancellables = Set<AnyCancellable>()
 
-    var viewStore: ViewStore<TodoListState, TodoListAction>?
+    private let viewStore: ViewStore<TodoListState, TodoListAction>
+
+    init(store: Store<TodoListState, TodoListAction>) {
+        self.viewStore = ViewStore(store)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +39,13 @@ final class TodoListViewController: UIViewController {
         
         let baritem = UIBarButtonItem(systemItem: .add)
         baritem.primaryAction = UIAction(handler: { [weak self] _ in
-            self?.viewStore?.send(.toggleAddTodoPresent)
+            self?.viewStore.send(.toggleAddTodoPresent)
         })
         self.navigationItem.rightBarButtonItem  = baritem
 
-        viewStore?.send(.initialize)
+        viewStore.send(.initialize)
 
-        viewStore?.publisher
+        viewStore.publisher
             .map(\.todoList)
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
@@ -44,7 +53,7 @@ final class TodoListViewController: UIViewController {
             })
             .store(in: &cancellables)
 
-        viewStore?.publisher
+        viewStore.publisher
             .map(\.isAddTodoPresented)
             .removeDuplicates()
             .filter { $0 }
@@ -67,35 +76,26 @@ final class TodoListViewController: UIViewController {
     }
 
     private func presentAddTodo() {
-        let viewController = AddTodoViewController()
-        let viewStore = ViewStore(
-            Store(initialState: AddTodoState(),
-                  reducer: addTodoReducer,
-                  environment: AddTodoEnvirenment()
-            )
+
+        let store = Store(
+            initialState: AddTodoState(),
+            reducer: addTodoReducer,
+            environment: AddTodoEnvirenment(todoManager: TodoManager.shared)
         )
-        viewStore.publisher
-            .map(\.addTodo)
-            .compactMap { $0 }
-            .prefix(1)
-            .sink(receiveValue: { [weak self] todo in
-                self?.viewStore?.send(.addTodo(todo))
-            })
-            .store(in: &cancellables)
-        viewController.viewStore = viewStore
+        let viewController = AddTodoViewController(store: store)
         self.navigationController?.pushViewController(viewController, animated: true)
-        self.viewStore?.send(.toggleAddTodoPresent)
+        self.viewStore.send(.toggleAddTodoPresent)
     }
 }
 
 extension TodoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewStore?.state.todoList.count ?? 0
+        return self.viewStore.state.todoList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return .init() }
-        guard let todo = self.viewStore?.state.todoList[indexPath.row] else { return .init() }
+        let todo = self.viewStore.state.todoList[indexPath.row]
         cell.textLabel?.text = todo.description
         cell.imageView?.image = todo.isDone ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
         return cell
@@ -104,6 +104,6 @@ extension TodoListViewController: UITableViewDataSource {
 
 extension TodoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewStore?.send(.toggle(index: indexPath.row))
+        viewStore.send(.toggle(index: indexPath.row))
     }
 }

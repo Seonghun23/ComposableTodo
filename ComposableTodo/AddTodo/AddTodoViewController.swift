@@ -19,7 +19,16 @@ final class AddTodoViewController: UIViewController {
 
     private var cancellables = Set<AnyCancellable>()
 
-    var viewStore: ViewStore<AddTodoState, AddTodoAction>?
+    private let viewStore: ViewStore<AddTodoState, AddTodoAction>
+
+    init(store: Store<AddTodoState, AddTodoAction>) {
+        self.viewStore = ViewStore(store)
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +38,14 @@ final class AddTodoViewController: UIViewController {
         let baritem = UIBarButtonItem(systemItem: .done)
         baritem.primaryAction = UIAction(handler: { [weak self] _ in
             guard let text = self?.textView.text else {
-                self?.viewStore?.send(.dismiss)
+                self?.viewStore.send(.dismiss)
                 return
             }
-            self?.viewStore?.send(.addTodo(text))
+            self?.viewStore.send(.addTodo(text))
         })
         self.navigationItem.rightBarButtonItem  = baritem
 
-        self.viewStore?.publisher
+        self.viewStore.publisher
             .map(\.isAddTodoDismissed)
             .filter { $0 }
             .sink(receiveValue: { [weak self] _ in

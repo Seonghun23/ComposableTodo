@@ -11,7 +11,7 @@ import ComposableArchitecture
 let addTodoReducer = Reducer<AddTodoState, AddTodoAction, AddTodoEnvirenment> { state, action, environment in
   switch action {
   case .addTodo(let todo):
-    state.addTodo = todo
+    environment.add(todo: todo)
     return Effect(value: .dismiss)
   
   case .dismiss:
