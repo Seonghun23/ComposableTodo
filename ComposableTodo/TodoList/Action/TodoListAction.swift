@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TodoListAction {
+enum TodoListAction: Equatable {
     case toggle(index: Int)
     case toggleAddTodoPresent
     case reload(list: [Todo])

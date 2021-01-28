@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AddTodoAction {
+enum AddTodoAction: Equatable {
     case addTodo(String)
     case dismiss
 }

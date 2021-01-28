@@ -23,9 +23,10 @@
 		1F2DD7D825C0668900AD4B34 /* AddTodoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */; };
 		1F2DD7DB25C0669F00AD4B34 /* AddTodoEnvirenment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DA25C0669F00AD4B34 /* AddTodoEnvirenment.swift */; };
 		1F2DD7DE25C066BA00AD4B34 /* AddTodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */; };
-		1F5C1B7F25C28D8400814B43 /* ComposableTodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B7E25C28D8400814B43 /* ComposableTodoTests.swift */; };
 		1F5C1B8E25C2BB3600814B43 /* TodoStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B8D25C2BB3600814B43 /* TodoStorable.swift */; };
 		1F5C1B9425C2BB7700814B43 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B9325C2BB7700814B43 /* TodoManager.swift */; };
+		1F5C1B9825C2F54800814B43 /* TodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B9725C2F54800814B43 /* TodoListTests.swift */; };
+		1F5C1B9F25C2F66300814B43 /* MockTodoListEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B9E25C2F66300814B43 /* MockTodoListEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +58,11 @@
 		1F2DD7DA25C0669F00AD4B34 /* AddTodoEnvirenment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoEnvirenment.swift; sourceTree = "<group>"; };
 		1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoReducer.swift; sourceTree = "<group>"; };
 		1F5C1B7C25C28D8400814B43 /* ComposableTodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComposableTodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F5C1B7E25C28D8400814B43 /* ComposableTodoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableTodoTests.swift; sourceTree = "<group>"; };
 		1F5C1B8025C28D8400814B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F5C1B8D25C2BB3600814B43 /* TodoStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStorable.swift; sourceTree = "<group>"; };
 		1F5C1B9325C2BB7700814B43 /* TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoManager.swift; sourceTree = "<group>"; };
+		1F5C1B9725C2F54800814B43 /* TodoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTests.swift; sourceTree = "<group>"; };
+		1F5C1B9E25C2F66300814B43 /* MockTodoListEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTodoListEnvironment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +217,8 @@
 		1F5C1B7D25C28D8400814B43 /* ComposableTodoTests */ = {
 			isa = PBXGroup;
 			children = (
-				1F5C1B7E25C28D8400814B43 /* ComposableTodoTests.swift */,
+				1F5C1B9D25C2F65100814B43 /* Mock */,
+				1F5C1B9725C2F54800814B43 /* TodoListTests.swift */,
 				1F5C1B8025C28D8400814B43 /* Info.plist */,
 			);
 			path = ComposableTodoTests;
@@ -228,6 +231,14 @@
 				1F5C1B9325C2BB7700814B43 /* TodoManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		1F5C1B9D25C2F65100814B43 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				1F5C1B9E25C2F66300814B43 /* MockTodoListEnvironment.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +368,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F5C1B7F25C28D8400814B43 /* ComposableTodoTests.swift in Sources */,
+				1F5C1B9825C2F54800814B43 /* TodoListTests.swift in Sources */,
+				1F5C1B9F25C2F66300814B43 /* MockTodoListEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
