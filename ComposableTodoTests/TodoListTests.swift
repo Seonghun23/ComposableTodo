@@ -62,6 +62,9 @@ final class TodoListTests: XCTestCase {
         store.assert(
             .send(.toggleAddTodoPresent) { state in
                 state.isAddTodoPresented = true
+            },
+            .send(.toggleAddTodoPresent) { state in
+                state.isAddTodoPresented = false
             }
         )
     }
