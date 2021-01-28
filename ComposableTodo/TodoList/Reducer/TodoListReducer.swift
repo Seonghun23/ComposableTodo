@@ -8,7 +8,7 @@
 import ComposableArchitecture
 
 
-let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment> { state, action, environment in
+let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironmentType> { state, action, environment in
     switch action {
     case .toggle(let index):
         var list = state.todoList
@@ -39,7 +39,7 @@ let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvir
     }
   }
 
-let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment> { state, action, environment in
+let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironmentType> { state, action, environment in
     switch action {
     case .toggle(let index):
         print("toggle at: \(index)")
@@ -59,7 +59,7 @@ let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnv
     }
   }
 
-let todoListReducer: Reducer<TodoListState, TodoListAction, TodoListEnvironment> = .combine([
+let todoListReducer: Reducer<TodoListState, TodoListAction, TodoListEnvironmentType> = .combine([
     updateTodoListReducer,
     printTodoListLogReducer
 ])

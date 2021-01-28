@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct AddTodoEnvirenment {
+protocol AddTodoEnvirenmentType {
+    func add(todo: String)
+}
+
+struct AddTodoEnvirenment: AddTodoEnvirenmentType {
     let todoManager: TodoStorable
 
     func add(todo: String) {

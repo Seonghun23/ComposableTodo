@@ -9,14 +9,13 @@ import Foundation
 import Combine
 import ComposableArchitecture
 
-struct TodoListEnvironment {
-    let todoManager: TodoStorable
+protocol TodoListEnvironmentType {
+    func save(_ todos: [Todo])
+    func load() -> Effect<[Todo], Never>
+}
 
-    let sampleData = [
-        Todo(description: "first"),
-        Todo(description: "second"),
-        Todo(description: "third")
-    ]
+struct TodoListEnvironment: TodoListEnvironmentType {
+    let todoManager: TodoStorable
 
     func save(_ todos: [Todo]) {
         todoManager.save(todos: todos)
