@@ -23,7 +23,18 @@
 		1F2DD7D825C0668900AD4B34 /* AddTodoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */; };
 		1F2DD7DB25C0669F00AD4B34 /* AddTodoEnvirenment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DA25C0669F00AD4B34 /* AddTodoEnvirenment.swift */; };
 		1F2DD7DE25C066BA00AD4B34 /* AddTodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */; };
+		1F5C1B7F25C28D8400814B43 /* ComposableTodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B7E25C28D8400814B43 /* ComposableTodoTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F5C1B8125C28D8400814B43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F2DD56D25BD782C00AD4B34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F2DD57425BD782C00AD4B34;
+			remoteInfo = ComposableTodo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1F2DD57525BD782C00AD4B34 /* ComposableTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComposableTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +54,9 @@
 		1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoAction.swift; sourceTree = "<group>"; };
 		1F2DD7DA25C0669F00AD4B34 /* AddTodoEnvirenment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoEnvirenment.swift; sourceTree = "<group>"; };
 		1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoReducer.swift; sourceTree = "<group>"; };
+		1F5C1B7C25C28D8400814B43 /* ComposableTodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComposableTodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F5C1B7E25C28D8400814B43 /* ComposableTodoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableTodoTests.swift; sourceTree = "<group>"; };
+		1F5C1B8025C28D8400814B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F5C1B7925C28D8400814B43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				1F2DD57725BD782C00AD4B34 /* ComposableTodo */,
+				1F5C1B7D25C28D8400814B43 /* ComposableTodoTests */,
 				1F2DD57625BD782C00AD4B34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				1F2DD57525BD782C00AD4B34 /* ComposableTodo.app */,
+				1F5C1B7C25C28D8400814B43 /* ComposableTodoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +207,15 @@
 			path = State;
 			sourceTree = "<group>";
 		};
+		1F5C1B7D25C28D8400814B43 /* ComposableTodoTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F5C1B7E25C28D8400814B43 /* ComposableTodoTests.swift */,
+				1F5C1B8025C28D8400814B43 /* Info.plist */,
+			);
+			path = ComposableTodoTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,6 +239,24 @@
 			productReference = 1F2DD57525BD782C00AD4B34 /* ComposableTodo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1F5C1B7B25C28D8400814B43 /* ComposableTodoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F5C1B8325C28D8400814B43 /* Build configuration list for PBXNativeTarget "ComposableTodoTests" */;
+			buildPhases = (
+				1F5C1B7825C28D8400814B43 /* Sources */,
+				1F5C1B7925C28D8400814B43 /* Frameworks */,
+				1F5C1B7A25C28D8400814B43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F5C1B8225C28D8400814B43 /* PBXTargetDependency */,
+			);
+			name = ComposableTodoTests;
+			productName = ComposableTodoTests;
+			productReference = 1F5C1B7C25C28D8400814B43 /* ComposableTodoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -218,6 +268,10 @@
 				TargetAttributes = {
 					1F2DD57425BD782C00AD4B34 = {
 						CreatedOnToolsVersion = 12.2;
+					};
+					1F5C1B7B25C28D8400814B43 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 1F2DD57425BD782C00AD4B34;
 					};
 				};
 			};
@@ -238,6 +292,7 @@
 			projectRoot = "";
 			targets = (
 				1F2DD57425BD782C00AD4B34 /* ComposableTodo */,
+				1F5C1B7B25C28D8400814B43 /* ComposableTodoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +304,13 @@
 			files = (
 				1F2DD58525BD782F00AD4B34 /* LaunchScreen.storyboard in Resources */,
 				1F2DD58225BD782F00AD4B34 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F5C1B7A25C28D8400814B43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +337,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F5C1B7825C28D8400814B43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F5C1B7F25C28D8400814B43 /* ComposableTodoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F5C1B8225C28D8400814B43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F2DD57425BD782C00AD4B34 /* ComposableTodo */;
+			targetProxy = 1F5C1B8125C28D8400814B43 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1F2DD58325BD782F00AD4B34 /* LaunchScreen.storyboard */ = {
@@ -443,6 +521,46 @@
 			};
 			name = Release;
 		};
+		1F5C1B8425C28D8400814B43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79JAW5V2W8;
+				INFOPLIST_FILE = ComposableTodoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Sunny.K.ComposableTodoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComposableTodo.app/ComposableTodo";
+			};
+			name = Debug;
+		};
+		1F5C1B8525C28D8400814B43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79JAW5V2W8;
+				INFOPLIST_FILE = ComposableTodoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Sunny.K.ComposableTodoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComposableTodo.app/ComposableTodo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -460,6 +578,15 @@
 			buildConfigurations = (
 				1F2DD58A25BD782F00AD4B34 /* Debug */,
 				1F2DD58B25BD782F00AD4B34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F5C1B8325C28D8400814B43 /* Build configuration list for PBXNativeTarget "ComposableTodoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F5C1B8425C28D8400814B43 /* Debug */,
+				1F5C1B8525C28D8400814B43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
