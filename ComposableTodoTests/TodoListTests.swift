@@ -28,7 +28,7 @@ final class TodoListTests: XCTestCase {
             reducer: updateTodoListReducer,
             environment: TodoListEnvironment(
                 todoManager: todoManager,
-                mainQueue: scheduler.eraseToAnyScheduler()
+                globalQueue: scheduler.eraseToAnyScheduler()
             )
         )
 
@@ -56,7 +56,7 @@ final class TodoListTests: XCTestCase {
             reducer: updateTodoListReducer,
             environment: TodoListEnvironment(
                 todoManager: todoManager,
-                mainQueue: scheduler.eraseToAnyScheduler()
+                globalQueue: scheduler.eraseToAnyScheduler()
             )
         )
 
@@ -72,7 +72,7 @@ final class TodoListTests: XCTestCase {
             reducer: updateTodoListReducer,
             environment: TodoListEnvironment(
                 todoManager: todoManager,
-                mainQueue: scheduler.eraseToAnyScheduler()
+                globalQueue: scheduler.eraseToAnyScheduler()
             )
         )
 
@@ -92,7 +92,7 @@ final class TodoListTests: XCTestCase {
             reducer: updateTodoListReducer,
             environment: TodoListEnvironment(
                 todoManager: todoManager,
-                mainQueue: scheduler.eraseToAnyScheduler()
+                globalQueue: scheduler.eraseToAnyScheduler()
             )
         )
 

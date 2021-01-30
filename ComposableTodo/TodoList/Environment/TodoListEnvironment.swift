@@ -11,5 +11,5 @@ import ComposableArchitecture
 
 struct TodoListEnvironment {
     let todoManager: TodoStorable
-    let mainQueue: AnySchedulerOf<DispatchQueue>
+    let globalQueue: AnySchedulerOf<DispatchQueue>
 }

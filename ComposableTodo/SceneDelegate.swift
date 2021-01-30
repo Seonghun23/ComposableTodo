@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             reducer: todoListReducer,
             environment: TodoListEnvironment(
                 todoManager: TodoManager.shared,
-                mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+                globalQueue: DispatchQueue.global().eraseToAnyScheduler()
             )
         )
         let viewController = TodoListViewController(store: store)

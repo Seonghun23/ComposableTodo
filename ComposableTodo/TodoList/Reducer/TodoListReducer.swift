@@ -11,8 +11,8 @@ enum Cancellable {
     static let initializeID = 10
 }
 
-let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment> { state, action, environment in
-
+let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment>
+{ state, action, environment in
 
     switch action {
     case .toggle(let index):
@@ -24,7 +24,7 @@ let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvir
     case .initialize:
         return Effect(
             environment.todoManager.todoPublisher
-                .subscribe(on: environment.mainQueue)
+                .subscribe(on: environment.globalQueue)
         )
         .cancellable(id: Cancellable.initializeID)
         .map(TodoListAction.reload)
@@ -33,16 +33,17 @@ let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvir
         return  .cancel(id: Cancellable.initializeID)
 
     case .reload(let list):
-      state.todoList = list
-      return .none
+        state.todoList = list
+        return .none
 
     case .toggleAddTodoPresent:
-      state.isAddTodoPresented = !state.isAddTodoPresented
-      return .none
+        state.isAddTodoPresented = !state.isAddTodoPresented
+        return .none
     }
-  }
+}
 
-let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment> { state, action, environment in
+let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment>
+{ state, action, environment in
     switch action {
     case .toggle(let index):
         print("toggle at: \(index)")
@@ -63,9 +64,10 @@ let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnv
         print("toggleAddTodoPresent")
         return .none
     }
-  }
+}
 
-let todoListReducer: Reducer<TodoListState, TodoListAction, TodoListEnvironment> = .combine([
-    updateTodoListReducer,
-    printTodoListLogReducer
-])
+let todoListReducer: Reducer<TodoListState, TodoListAction, TodoListEnvironment>
+    = .combine([
+        updateTodoListReducer,
+        printTodoListLogReducer
+    ])
