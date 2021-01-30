@@ -13,8 +13,3 @@ struct TodoListEnvironment {
     let todoManager: TodoStorable
     let mainQueue: AnySchedulerOf<DispatchQueue>
 }
-
-enum CodableError: Error {
-    case unknown
-    case noData
-}

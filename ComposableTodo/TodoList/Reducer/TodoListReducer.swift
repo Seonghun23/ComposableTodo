@@ -27,15 +27,6 @@ let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvir
                 .subscribe(on: environment.mainQueue)
         )
         .cancellable(id: Cancellable.initializeID)
-        .catchToEffect()
-        .map { result -> [Todo] in
-            switch result {
-            case .success(let todo):
-                return todo
-            case .failure(let error):
-                return []
-            }
-        }
         .map(TodoListAction.reload)
 
     case .deinitialize:
