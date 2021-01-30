@@ -43,8 +43,6 @@ final class TodoListViewController: UIViewController {
         })
         self.navigationItem.rightBarButtonItem  = baritem
 
-        viewStore.send(.initialize)
-
         viewStore.publisher
             .map(\.todoList)
             .receive(on: DispatchQueue.main)
@@ -62,6 +60,12 @@ final class TodoListViewController: UIViewController {
                 self?.presentAddTodo()
             })
             .store(in: &cancellables)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        viewStore.send(.initialize)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
