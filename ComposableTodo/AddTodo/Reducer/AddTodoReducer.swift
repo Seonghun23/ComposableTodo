@@ -8,7 +8,7 @@
 import Foundation
 import ComposableArchitecture
 
-let addTodoReducer = Reducer<AddTodoState, AddTodoAction, AddTodoEnvirenmentType> { state, action, environment in
+let addTodoReducer = Reducer<AddTodoState, AddTodoAction, AddTodoEnvirenment> { state, action, environment in
   switch action {
   case .addTodo(let todo):
     environment.add(todo: todo)

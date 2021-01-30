@@ -5,35 +5,46 @@
 //  Created by Sunny.K on 2021/01/28.
 //
 
+import Foundation
 import XCTest
 import ComposableArchitecture
 
 @testable import ComposableTodo
 final class TodoListTests: XCTestCase {
-    var environment: MockTodoListEnvironment!
+    var todoManager: MockTodoManager!
+    var scheduler = DispatchQueue.testScheduler
 
     override func setUpWithError() throws {
-        environment = MockTodoListEnvironment()
+        todoManager = MockTodoManager()
     }
 
     override func tearDownWithError() throws {
-        environment = nil
+        todoManager = nil
     }
 
     func test_whenStoreReceiveInitialize_thenLoadShouldCalled() {
         let store = TestStore(
             initialState: TodoListState(),
             reducer: updateTodoListReducer,
-            environment: environment
+            environment: TodoListEnvironment(
+                todoManager: todoManager,
+                mainQueue: scheduler.eraseToAnyScheduler()
+            )
         )
-        environment.expectedLoad = Effect(value: [Todo(description: "reload")])
+
+
 
         store.assert(
             .send(.initialize),
+            .do { self.scheduler.advance() },
+            .receive(.reload(list: [])) { state in
+                state.todoList = []
+            },
+            .do { self.todoManager.todos = [Todo(description: "reload")] },
             .receive(.reload(list: [Todo(description: "reload")])) { state in
                 state.todoList = [Todo(description: "reload")]
             },
-            .do { XCTAssertEqual(self.environment.isLoadCalled, true) }
+            .send(.deinitialize)
         )
     }
 
@@ -43,12 +54,15 @@ final class TodoListTests: XCTestCase {
                 todoList: [Todo(description: "test")]
             ),
             reducer: updateTodoListReducer,
-            environment: environment
+            environment: TodoListEnvironment(
+                todoManager: todoManager,
+                mainQueue: scheduler.eraseToAnyScheduler()
+            )
         )
 
         store.assert(
             .send(.toggle(index: 0)),
-            .do() { XCTAssertEqual(self.environment.isSaveCalled, true) }
+            .do() { XCTAssertEqual(self.todoManager.isSaveCalled, true) }
         )
     }
 
@@ -56,7 +70,10 @@ final class TodoListTests: XCTestCase {
         let store = TestStore(
             initialState: TodoListState(),
             reducer: updateTodoListReducer,
-            environment: environment
+            environment: TodoListEnvironment(
+                todoManager: todoManager,
+                mainQueue: scheduler.eraseToAnyScheduler()
+            )
         )
 
         store.assert(
@@ -73,7 +90,10 @@ final class TodoListTests: XCTestCase {
         let store = TestStore(
             initialState: TodoListState(),
             reducer: updateTodoListReducer,
-            environment: environment
+            environment: TodoListEnvironment(
+                todoManager: todoManager,
+                mainQueue: scheduler.eraseToAnyScheduler()
+            )
         )
 
         store.assert(

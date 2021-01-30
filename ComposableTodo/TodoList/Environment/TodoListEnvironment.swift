@@ -9,24 +9,9 @@ import Foundation
 import Combine
 import ComposableArchitecture
 
-protocol TodoListEnvironmentType {
-    func save(_ todos: [Todo])
-    func load() -> Effect<[Todo], Never>
-}
-
-struct TodoListEnvironment: TodoListEnvironmentType {
+struct TodoListEnvironment {
     let todoManager: TodoStorable
-
-    func save(_ todos: [Todo]) {
-        todoManager.save(todos: todos)
-    }
-
-    func load() -> Effect<[Todo], Never> {
-        let publisher = todoManager.todoPublisher
-            .subscribe(on: DispatchQueue.global())
-
-        return Effect(publisher)
-    }
+    let mainQueue: AnySchedulerOf<DispatchQueue>
 }
 
 enum CodableError: Error {

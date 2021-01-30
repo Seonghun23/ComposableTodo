@@ -12,4 +12,5 @@ enum TodoListAction: Equatable {
     case toggleAddTodoPresent
     case reload(list: [Todo])
     case initialize
+    case deinitialize
 }

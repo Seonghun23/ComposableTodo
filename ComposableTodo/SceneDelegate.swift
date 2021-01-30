@@ -22,7 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let store = Store(
             initialState: TodoListState(),
             reducer: todoListReducer,
-            environment: TodoListEnvironment(todoManager: TodoManager.shared)
+            environment: TodoListEnvironment(
+                todoManager: TodoManager.shared,
+                mainQueue: DispatchQueue.main.eraseToAnyScheduler()
+            )
         )
         let viewController = TodoListViewController(store: store)
         let navigationController = UINavigationController(rootViewController: viewController)

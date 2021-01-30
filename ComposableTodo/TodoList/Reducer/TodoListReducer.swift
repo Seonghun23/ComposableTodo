@@ -7,27 +7,39 @@
 
 import ComposableArchitecture
 
+enum Cancellable {
+    static let initializeID = 10
+}
 
-let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironmentType> { state, action, environment in
+let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment> { state, action, environment in
+
+
     switch action {
     case .toggle(let index):
-        var list = state.todoList
-        list[index].isDone.toggle()
-        environment.save(list)
+        var todos = state.todoList
+        todos[index].isDone.toggle()
+        environment.todoManager.save(todos: todos)
         return .none
 
     case .initialize:
-        return environment.load()
-          .catchToEffect()
-          .map { result -> [Todo] in
-              switch result {
-              case .success(let todo):
-                  return todo
-              case .failure(let error):
-                  return []
-              }
-          }
-            .map(TodoListAction.reload)
+        return Effect(
+            environment.todoManager.todoPublisher
+                .subscribe(on: environment.mainQueue)
+        )
+        .cancellable(id: Cancellable.initializeID)
+        .catchToEffect()
+        .map { result -> [Todo] in
+            switch result {
+            case .success(let todo):
+                return todo
+            case .failure(let error):
+                return []
+            }
+        }
+        .map(TodoListAction.reload)
+
+    case .deinitialize:
+        return  .cancel(id: Cancellable.initializeID)
 
     case .reload(let list):
       state.todoList = list
@@ -39,7 +51,7 @@ let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvir
     }
   }
 
-let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironmentType> { state, action, environment in
+let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment> { state, action, environment in
     switch action {
     case .toggle(let index):
         print("toggle at: \(index)")
@@ -47,6 +59,9 @@ let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnv
 
     case .initialize:
         print("initialize")
+        return .none
+    case .deinitialize:
+        print("deinitialize")
         return .none
 
     case .reload(let list):
@@ -59,7 +74,7 @@ let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnv
     }
   }
 
-let todoListReducer: Reducer<TodoListState, TodoListAction, TodoListEnvironmentType> = .combine([
+let todoListReducer: Reducer<TodoListState, TodoListAction, TodoListEnvironment> = .combine([
     updateTodoListReducer,
     printTodoListLogReducer
 ])

@@ -64,6 +64,12 @@ final class TodoListViewController: UIViewController {
             .store(in: &cancellables)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        viewStore.send(.deinitialize)
+    }
+
     private func setLayout() {
         self.view.addSubview(tableView)
 
