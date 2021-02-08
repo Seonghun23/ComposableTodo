@@ -48,6 +48,7 @@ final class AddTodoViewController: UIViewController {
         self.viewStore.publisher
             .map(\.isAddTodoDismissed)
             .filter { $0 }
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.navigationController?.popViewController(animated: true)
             })
