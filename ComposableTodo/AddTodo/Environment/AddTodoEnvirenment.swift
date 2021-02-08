@@ -9,8 +9,4 @@ import Foundation
 
 struct AddTodoEnvirenment {
     let todoManager: TodoStorable
-
-    func add(todo: String) {
-        todoManager.add(todo: todo)
-    }
 }
