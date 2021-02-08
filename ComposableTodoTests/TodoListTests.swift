@@ -26,7 +26,7 @@ final class TodoListTests: XCTestCase {
         let store = TestStore(
             initialState: TodoListState(),
             reducer: updateTodoListReducer,
-            environment: TodoListEnvironment(
+            environment: TodoEnvironment(
                 todoManager: todoManager,
                 globalQueue: scheduler.eraseToAnyScheduler()
             )
@@ -54,7 +54,7 @@ final class TodoListTests: XCTestCase {
                 todoList: [Todo(description: "test")]
             ),
             reducer: updateTodoListReducer,
-            environment: TodoListEnvironment(
+            environment: TodoEnvironment(
                 todoManager: todoManager,
                 globalQueue: scheduler.eraseToAnyScheduler()
             )
@@ -70,7 +70,7 @@ final class TodoListTests: XCTestCase {
         let store = TestStore(
             initialState: TodoListState(),
             reducer: updateTodoListReducer,
-            environment: TodoListEnvironment(
+            environment: TodoEnvironment(
                 todoManager: todoManager,
                 globalQueue: scheduler.eraseToAnyScheduler()
             )
@@ -90,7 +90,7 @@ final class TodoListTests: XCTestCase {
         let store = TestStore(
             initialState: TodoListState(),
             reducer: updateTodoListReducer,
-            environment: TodoListEnvironment(
+            environment: TodoEnvironment(
                 todoManager: todoManager,
                 globalQueue: scheduler.eraseToAnyScheduler()
             )
