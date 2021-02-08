@@ -11,7 +11,7 @@ enum Cancellable {
     static let initializeID = 10
 }
 
-let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment>
+let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoEnvironment>
 { state, action, environment in
 
     switch action {
@@ -42,7 +42,7 @@ let updateTodoListReducer = Reducer<TodoListState, TodoListAction, TodoListEnvir
     }
 }
 
-let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnvironment>
+let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoEnvironment>
 { state, action, environment in
     switch action {
     case .toggle(let index):
@@ -66,7 +66,7 @@ let printTodoListLogReducer = Reducer<TodoListState, TodoListAction, TodoListEnv
     }
 }
 
-let todoListReducer: Reducer<TodoListState, TodoListAction, TodoListEnvironment>
+let todoListReducer: Reducer<TodoListState, TodoListAction, TodoEnvironment>
     = .combine([
         updateTodoListReducer,
         printTodoListLogReducer

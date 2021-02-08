@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let store = Store(
             initialState: TodoListState(),
             reducer: todoListReducer,
-            environment: TodoListEnvironment(
+            environment: TodoEnvironment(
                 todoManager: TodoManager.shared,
                 globalQueue: DispatchQueue.global().eraseToAnyScheduler()
             )

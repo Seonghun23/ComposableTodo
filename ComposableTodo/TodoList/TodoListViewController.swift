@@ -90,7 +90,10 @@ final class TodoListViewController: UIViewController {
         let store = Store(
             initialState: AddTodoState(),
             reducer: addTodoReducer,
-            environment: AddTodoEnvirenment(todoManager: TodoManager.shared)
+            environment: TodoEnvironment(
+                todoManager: TodoManager.shared,
+                globalQueue: DispatchQueue.global().eraseToAnyScheduler()
+            )
         )
         let viewController = AddTodoViewController(store: store)
         self.navigationController?.pushViewController(viewController, animated: true)
