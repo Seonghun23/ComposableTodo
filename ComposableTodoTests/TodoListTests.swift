@@ -10,9 +10,10 @@ import XCTest
 import ComposableArchitecture
 
 @testable import ComposableTodo
+
+@MainActor
 final class TodoListTests: XCTestCase {
     var todoManager: MockTodoManager!
-    var scheduler = DispatchQueue.testScheduler
 
     override func setUpWithError() throws {
         todoManager = MockTodoManager()
@@ -22,84 +23,59 @@ final class TodoListTests: XCTestCase {
         todoManager = nil
     }
 
-    func test_whenStoreReceiveInitialize_thenLoadShouldCalled() {
+    func test_whenStoreReceiveInitialize_thenLoadShouldCalled() async {
         let store = TestStore(
-            initialState: TodoListState(),
-            reducer: updateTodoListReducer,
-            environment: TodoEnvironment(
-                todoManager: todoManager,
-                globalQueue: scheduler.eraseToAnyScheduler()
-            )
+            initialState: .init(),
+            reducer: TodoListReducer(todoManager: todoManager)
         )
-
-
-
-        store.assert(
-            .send(.initialize),
-            .do { self.scheduler.advance() },
-            .receive(.reload(list: [])) { state in
-                state.todoList = []
-            },
-            .do { self.todoManager.todos = [Todo(description: "reload")] },
-            .receive(.reload(list: [Todo(description: "reload")])) { state in
-                state.todoList = [Todo(description: "reload")]
-            },
-            .send(.deinitialize)
-        )
+        
+        todoManager.todos = [Todo(description: "initialize")]
+        await store.send(.initialize)
+        await store.receive(.reload(list: [Todo(description: "initialize")])) { state in
+            state.todoList = [Todo(description: "initialize")]
+        }
+    
+        todoManager.todos = [Todo(description: "reload")]
+        await store.receive(.reload(list: [Todo(description: "reload")])) { state in
+            state.todoList = [Todo(description: "reload")]
+        }
+        
+        await store.send(.deinitialize)
     }
 
-    func test_whenStoreReceiveToggle_thenSaveShouldCalled() {
+    func test_whenStoreReceiveToggle_thenSaveShouldCalled() async {
         let store = TestStore(
-            initialState: TodoListState(
+            initialState: .init(
                 todoList: [Todo(description: "test")]
             ),
-            reducer: updateTodoListReducer,
-            environment: TodoEnvironment(
-                todoManager: todoManager,
-                globalQueue: scheduler.eraseToAnyScheduler()
-            )
+            reducer: TodoListReducer(todoManager: todoManager)
         )
-
-        store.assert(
-            .send(.toggle(index: 0)),
-            .do() { XCTAssertEqual(self.todoManager.isSaveCalled, true) }
-        )
+        await store.send(.toggle(index: 0))
+        XCTAssertEqual(todoManager.isSaveCalled, true)
     }
 
-    func test_whenStoreReceiveToggleAddTodoPresent_thenIsAddTodoPresentedShouldBeToggled() {
+    func test_whenStoreReceiveToggleAddTodoPresent_thenIsAddTodoPresentedShouldBeToggled() async {
         let store = TestStore(
-            initialState: TodoListState(),
-            reducer: updateTodoListReducer,
-            environment: TodoEnvironment(
-                todoManager: todoManager,
-                globalQueue: scheduler.eraseToAnyScheduler()
-            )
+            initialState: .init(),
+            reducer: TodoListReducer(todoManager: todoManager)
         )
 
-        store.assert(
-            .send(.toggleAddTodoPresent) { state in
-                state.isAddTodoPresented = true
-            },
-            .send(.toggleAddTodoPresent) { state in
-                state.isAddTodoPresented = false
-            }
-        )
+        await store.send(.toggleAddTodoPresent) { state in
+            state.isAddTodoPresented = true
+        }
+        await store.send(.toggleAddTodoPresent) { state in
+            state.isAddTodoPresented = false
+        }
     }
 
-    func test_whenStoreReceiveReload_thenTodoListShouldBeUpdated() {
+    func test_whenStoreReceiveReload_thenTodoListShouldBeUpdated() async {
         let store = TestStore(
-            initialState: TodoListState(),
-            reducer: updateTodoListReducer,
-            environment: TodoEnvironment(
-                todoManager: todoManager,
-                globalQueue: scheduler.eraseToAnyScheduler()
-            )
+            initialState: .init(),
+            reducer: TodoListReducer(todoManager: todoManager)
         )
 
-        store.assert(
-            .send(.reload(list: [Todo(description: "test")])) { state in
-                state.todoList = [Todo(description: "test")]
-            }
-        )
+        await store.send(.reload(list: [Todo(description: "test")])) { state in
+            state.todoList = [Todo(description: "test")]
+        }
     }
 }

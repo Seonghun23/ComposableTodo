@@ -21,9 +21,9 @@ final class TodoListViewController: UIViewController {
 
     private var cancellables = Set<AnyCancellable>()
 
-    private let viewStore: ViewStore<TodoListState, TodoListAction>
+    private let viewStore: ViewStoreOf<TodoListReducer>
 
-    init(store: Store<TodoListState, TodoListAction>) {
+    init(store: StoreOf<TodoListReducer>) {
         self.viewStore = ViewStore(store)
         super.init(nibName: nil, bundle: nil)
     }
@@ -88,11 +88,9 @@ final class TodoListViewController: UIViewController {
     private func presentAddTodo() {
 
         let store = Store(
-            initialState: AddTodoState(),
-            reducer: addTodoReducer,
-            environment: TodoEnvironment(
-                todoManager: TodoManager.shared,
-                globalQueue: DispatchQueue.global().eraseToAnyScheduler()
+            initialState: .init(),
+            reducer: AddTodoReducer(
+                todoManager: TodoManager.shared
             )
         )
         let viewController = AddTodoViewController(store: store)

@@ -14,13 +14,8 @@
 		1F2DD58525BD782F00AD4B34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2DD58325BD782F00AD4B34 /* LaunchScreen.storyboard */; };
 		1F2DD58F25BD7E2800AD4B34 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1F2DD58E25BD7E2800AD4B34 /* ComposableArchitecture */; };
 		1F2DD59F25BD828F00AD4B34 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD59E25BD828F00AD4B34 /* Todo.swift */; };
-		1F2DD7BC25C04A4000AD4B34 /* TodoListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7BB25C04A4000AD4B34 /* TodoListState.swift */; };
-		1F2DD7C025C04A6800AD4B34 /* TodoListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7BF25C04A6800AD4B34 /* TodoListAction.swift */; };
-		1F2DD7C625C04AB000AD4B34 /* TodoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7C525C04AB000AD4B34 /* TodoEnvironment.swift */; };
 		1F2DD7C925C04AED00AD4B34 /* TodoListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7C825C04AED00AD4B34 /* TodoListReducer.swift */; };
 		1F2DD7CD25C05DD800AD4B34 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7CC25C05DD800AD4B34 /* AddTodoViewController.swift */; };
-		1F2DD7D425C0666700AD4B34 /* AddTodoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7D325C0666700AD4B34 /* AddTodoState.swift */; };
-		1F2DD7D825C0668900AD4B34 /* AddTodoAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */; };
 		1F2DD7DE25C066BA00AD4B34 /* AddTodoReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */; };
 		1F5C1B8E25C2BB3600814B43 /* TodoStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B8D25C2BB3600814B43 /* TodoStorable.swift */; };
 		1F5C1B9425C2BB7700814B43 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C1B9325C2BB7700814B43 /* TodoManager.swift */; };
@@ -47,13 +42,8 @@
 		1F2DD58425BD782F00AD4B34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F2DD58625BD782F00AD4B34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F2DD59E25BD828F00AD4B34 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		1F2DD7BB25C04A4000AD4B34 /* TodoListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListState.swift; sourceTree = "<group>"; };
-		1F2DD7BF25C04A6800AD4B34 /* TodoListAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAction.swift; sourceTree = "<group>"; };
-		1F2DD7C525C04AB000AD4B34 /* TodoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEnvironment.swift; sourceTree = "<group>"; };
 		1F2DD7C825C04AED00AD4B34 /* TodoListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListReducer.swift; sourceTree = "<group>"; };
 		1F2DD7CC25C05DD800AD4B34 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
-		1F2DD7D325C0666700AD4B34 /* AddTodoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoState.swift; sourceTree = "<group>"; };
-		1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoAction.swift; sourceTree = "<group>"; };
 		1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoReducer.swift; sourceTree = "<group>"; };
 		1F5C1B7C25C28D8400814B43 /* ComposableTodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComposableTodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F5C1B8025C28D8400814B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,7 +95,6 @@
 			children = (
 				1F2DD57825BD782C00AD4B34 /* AppDelegate.swift */,
 				1F2DD57A25BD782C00AD4B34 /* SceneDelegate.swift */,
-				1FC4198425D1416A003C8290 /* Environment */,
 				1F5C1B8C25C2BB1F00814B43 /* Services */,
 				1F2DD59D25BD828700AD4B34 /* Models */,
 				1F2DD59625BD807200AD4B34 /* AddTodo */,
@@ -120,10 +109,8 @@
 		1F2DD59325BD7FD000AD4B34 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				1F2DD7C325C04A9100AD4B34 /* Reducer */,
-				1F2DD7B925C04A0C00AD4B34 /* Action */,
-				1F2DD7B725C049D800AD4B34 /* State */,
 				1F2DD57C25BD782C00AD4B34 /* TodoListViewController.swift */,
+				1F2DD7C825C04AED00AD4B34 /* TodoListReducer.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -131,10 +118,8 @@
 		1F2DD59625BD807200AD4B34 /* AddTodo */ = {
 			isa = PBXGroup;
 			children = (
-				1F2DD7D225C0665700AD4B34 /* State */,
-				1F2DD7D125C0664E00AD4B34 /* Action */,
-				1F2DD7CF25C0663800AD4B34 /* Reducer */,
 				1F2DD7CC25C05DD800AD4B34 /* AddTodoViewController.swift */,
+				1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */,
 			);
 			path = AddTodo;
 			sourceTree = "<group>";
@@ -145,54 +130,6 @@
 				1F2DD59E25BD828F00AD4B34 /* Todo.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		1F2DD7B725C049D800AD4B34 /* State */ = {
-			isa = PBXGroup;
-			children = (
-				1F2DD7BB25C04A4000AD4B34 /* TodoListState.swift */,
-			);
-			path = State;
-			sourceTree = "<group>";
-		};
-		1F2DD7B925C04A0C00AD4B34 /* Action */ = {
-			isa = PBXGroup;
-			children = (
-				1F2DD7BF25C04A6800AD4B34 /* TodoListAction.swift */,
-			);
-			path = Action;
-			sourceTree = "<group>";
-		};
-		1F2DD7C325C04A9100AD4B34 /* Reducer */ = {
-			isa = PBXGroup;
-			children = (
-				1F2DD7C825C04AED00AD4B34 /* TodoListReducer.swift */,
-			);
-			path = Reducer;
-			sourceTree = "<group>";
-		};
-		1F2DD7CF25C0663800AD4B34 /* Reducer */ = {
-			isa = PBXGroup;
-			children = (
-				1F2DD7DD25C066BA00AD4B34 /* AddTodoReducer.swift */,
-			);
-			path = Reducer;
-			sourceTree = "<group>";
-		};
-		1F2DD7D125C0664E00AD4B34 /* Action */ = {
-			isa = PBXGroup;
-			children = (
-				1F2DD7D725C0668900AD4B34 /* AddTodoAction.swift */,
-			);
-			path = Action;
-			sourceTree = "<group>";
-		};
-		1F2DD7D225C0665700AD4B34 /* State */ = {
-			isa = PBXGroup;
-			children = (
-				1F2DD7D325C0666700AD4B34 /* AddTodoState.swift */,
-			);
-			path = State;
 			sourceTree = "<group>";
 		};
 		1F5C1B7D25C28D8400814B43 /* ComposableTodoTests */ = {
@@ -220,14 +157,6 @@
 				1F5C1BAC25C39FC200814B43 /* MockTodoManager.swift */,
 			);
 			path = Mock;
-			sourceTree = "<group>";
-		};
-		1FC4198425D1416A003C8290 /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				1F2DD7C525C04AB000AD4B34 /* TodoEnvironment.swift */,
-			);
-			path = Environment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,16 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F2DD7C625C04AB000AD4B34 /* TodoEnvironment.swift in Sources */,
 				1F2DD57D25BD782C00AD4B34 /* TodoListViewController.swift in Sources */,
 				1F2DD57925BD782C00AD4B34 /* AppDelegate.swift in Sources */,
-				1F2DD7BC25C04A4000AD4B34 /* TodoListState.swift in Sources */,
 				1F2DD7CD25C05DD800AD4B34 /* AddTodoViewController.swift in Sources */,
 				1F2DD7DE25C066BA00AD4B34 /* AddTodoReducer.swift in Sources */,
-				1F2DD7D825C0668900AD4B34 /* AddTodoAction.swift in Sources */,
 				1F2DD7C925C04AED00AD4B34 /* TodoListReducer.swift in Sources */,
-				1F2DD7C025C04A6800AD4B34 /* TodoListAction.swift in Sources */,
-				1F2DD7D425C0666700AD4B34 /* AddTodoState.swift in Sources */,
 				1F5C1B9425C2BB7700814B43 /* TodoManager.swift in Sources */,
 				1F5C1B8E25C2BB3600814B43 /* TodoStorable.swift in Sources */,
 				1F2DD57B25BD782C00AD4B34 /* SceneDelegate.swift in Sources */,

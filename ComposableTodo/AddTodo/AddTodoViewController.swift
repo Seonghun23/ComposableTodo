@@ -19,9 +19,9 @@ final class AddTodoViewController: UIViewController {
 
     private var cancellables = Set<AnyCancellable>()
 
-    private let viewStore: ViewStore<AddTodoState, AddTodoAction>
+    private let viewStore: ViewStoreOf<AddTodoReducer>
 
-    init(store: Store<AddTodoState, AddTodoAction>) {
+    init(store: StoreOf<AddTodoReducer>) {
         self.viewStore = ViewStore(store)
         super.init(nibName: nil, bundle: nil)
     }

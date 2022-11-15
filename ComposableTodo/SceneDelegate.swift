@@ -20,11 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         let store = Store(
-            initialState: TodoListState(),
-            reducer: todoListReducer,
-            environment: TodoEnvironment(
-                todoManager: TodoManager.shared,
-                globalQueue: DispatchQueue.global().eraseToAnyScheduler()
+            initialState: .init(),
+            reducer: TodoListReducer(
+                todoManager: TodoManager.shared
             )
         )
         let viewController = TodoListViewController(store: store)
