@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14AC96B32959B87F00F742A4 /* Dependency+TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AC96B22959B87F00F742A4 /* Dependency+TodoManager.swift */; };
 		1F2DD57925BD782C00AD4B34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD57825BD782C00AD4B34 /* AppDelegate.swift */; };
 		1F2DD57B25BD782C00AD4B34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD57A25BD782C00AD4B34 /* SceneDelegate.swift */; };
 		1F2DD57D25BD782C00AD4B34 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DD57C25BD782C00AD4B34 /* TodoListViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14AC96B22959B87F00F742A4 /* Dependency+TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dependency+TodoManager.swift"; sourceTree = "<group>"; };
 		1F2DD57525BD782C00AD4B34 /* ComposableTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComposableTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2DD57825BD782C00AD4B34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F2DD57A25BD782C00AD4B34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14AC96B12959B86D00F742A4 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				14AC96B22959B87F00F742A4 /* Dependency+TodoManager.swift */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
 		1F2DD56C25BD782C00AD4B34 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 			children = (
 				1F2DD57825BD782C00AD4B34 /* AppDelegate.swift */,
 				1F2DD57A25BD782C00AD4B34 /* SceneDelegate.swift */,
+				14AC96B12959B86D00F742A4 /* Dependency */,
 				1F5C1B8C25C2BB1F00814B43 /* Services */,
 				1F2DD59D25BD828700AD4B34 /* Models */,
 				1F2DD59625BD807200AD4B34 /* AddTodo */,
@@ -264,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14AC96B32959B87F00F742A4 /* Dependency+TodoManager.swift in Sources */,
 				1F2DD57D25BD782C00AD4B34 /* TodoListViewController.swift in Sources */,
 				1F2DD57925BD782C00AD4B34 /* AppDelegate.swift in Sources */,
 				1F2DD7CD25C05DD800AD4B34 /* AddTodoViewController.swift in Sources */,

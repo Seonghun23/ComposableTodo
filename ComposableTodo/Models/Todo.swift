@@ -9,5 +9,5 @@ import Foundation
 
 struct Todo: Equatable, Codable {
     let description: String
-    var isDone: Bool = false
+    var done: Bool = false
 }

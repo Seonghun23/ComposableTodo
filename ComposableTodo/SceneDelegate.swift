@@ -21,9 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let store = Store(
             initialState: .init(),
-            reducer: TodoListReducer(
-                todoManager: TodoManager.shared
-            )
+            reducer: TodoListReducer()
         )
         let viewController = TodoListViewController(store: store)
         let navigationController = UINavigationController(rootViewController: viewController)

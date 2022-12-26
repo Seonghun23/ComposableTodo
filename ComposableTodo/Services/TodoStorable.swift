@@ -9,8 +9,7 @@ import Foundation
 import Combine
 
 protocol TodoStorable {
-    var todoPublisher: Published<[Todo]>.Publisher { get }
-
-    func add(todo: String)
-    func save(todos: [Todo])
+    func todos() async -> [Todo]
+    func add(todo: String) async
+    func save(todos: [Todo]) async
 }

@@ -19,21 +19,21 @@ struct AddTodoReducer: ReducerProtocol {
         var isAddTodoDismissed = false
     }
     
-    init(todoManager: TodoStorable) {
-        self.todoManager = todoManager
-    }
+    @Dependency(\.todoManager) var todoManager
     
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-        switch action {
-        case .addTodo(let todo):
-          todoManager.add(todo: todo)
-          return Effect(value: .dismiss)
-        
-        case .dismiss:
-          state.isAddTodoDismissed = true
-          return .none
+    var body: some ReducerProtocol<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .addTodo(let todo):
+                return .task {
+                    await todoManager.add(todo: todo)
+                    return .dismiss
+                }
+                
+            case .dismiss:
+              state.isAddTodoDismissed = true
+              return .none
+            }
         }
     }
-    
-    private let todoManager: TodoStorable
 }

@@ -17,43 +17,44 @@ struct TodoListReducer: ReducerProtocol {
         case toggleAddTodoPresent
         case reload(list: [Todo])
         case initialize
-        case deinitialize
     }
     
     struct State: Equatable {
         var todoList: [Todo] = []
         var isAddTodoPresented = false
     }
-
-    init(todoManager: TodoStorable) {
-        self.todoManager = todoManager
-    }
     
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-        switch action {
-        case .toggle(let index):
-            var todos = state.todoList
-            todos[index].isDone.toggle()
-            todoManager.save(todos: todos)
-            return .none
-
-        case .initialize:
-            return Effect(todoManager.todoPublisher)
-                .cancellable(id: Cancellable.initializeID)
-                .map(Action.reload)
-
-        case .deinitialize:
-            return .cancel(id: Cancellable.initializeID)
-
-        case .reload(let list):
-            state.todoList = list
-            return .none
-
-        case .toggleAddTodoPresent:
-            state.isAddTodoPresented = !state.isAddTodoPresented
-            return .none
+    @Dependency(\.todoManager) var todoManager
+    
+    var body: some ReducerProtocol<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .toggle(let index):
+                var todos = state.todoList
+                todos[index].done.toggle()
+                return .task { [todos] in
+                    await todoManager.save(todos: todos)
+                    return .reload(list: todos)
+                }
+                .cancellable(id: CancelID.self)
+                
+            case .initialize:
+                return .task {
+                    let todos = await todoManager.todos()
+                    return .reload(list: todos)
+                }
+                .cancellable(id: CancelID.self)
+                
+            case .reload(let list):
+                state.todoList = list
+                return .none
+                
+            case .toggleAddTodoPresent:
+                state.isAddTodoPresented.toggle()
+                return .none
+            }
         }
     }
     
-    private let todoManager: TodoStorable
+    private enum CancelID {}
 }

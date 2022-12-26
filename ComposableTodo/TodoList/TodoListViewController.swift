@@ -68,12 +68,6 @@ final class TodoListViewController: UIViewController {
         viewStore.send(.initialize)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-
-        viewStore.send(.deinitialize)
-    }
-
     private func setLayout() {
         self.view.addSubview(tableView)
 
@@ -89,9 +83,7 @@ final class TodoListViewController: UIViewController {
 
         let store = Store(
             initialState: .init(),
-            reducer: AddTodoReducer(
-                todoManager: TodoManager.shared
-            )
+            reducer: AddTodoReducer()
         )
         let viewController = AddTodoViewController(store: store)
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -108,7 +100,7 @@ extension TodoListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else { return .init() }
         let todo = self.viewStore.state.todoList[indexPath.row]
         cell.textLabel?.text = todo.description
-        cell.imageView?.image = todo.isDone ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
+        cell.imageView?.image = todo.done ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
         return cell
     }
 }

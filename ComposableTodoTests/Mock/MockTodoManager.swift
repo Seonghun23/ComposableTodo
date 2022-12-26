@@ -9,18 +9,20 @@ import Foundation
 
 @testable import ComposableTodo
 final class MockTodoManager: TodoStorable {
-    var todoPublisher: Published<[Todo]>.Publisher { $todos }
-
-    @Published var todos: [Todo] = []
+    var todos: [Todo] = []
 
     var isAddCalled = false
     var isSaveCalled = false
 
-    func add(todo: String) {
+    func todos() async -> [Todo] {
+        todos
+    }
+    
+    func add(todo: String) async {
         isAddCalled = true
     }
-
-    func save(todos: [Todo]) {
+    
+    func save(todos: [Todo]) async {
         isSaveCalled = true
     }
 }
